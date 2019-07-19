@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../assets/mui/css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+    <script src="../../libs/jquery.min.js"></script>
+    <script src="../../assets/mui/js/mui.min.js"></script>
+    <script src="../../libs/rem.js"></script>
+    <script src="../../js/main.js"></script>
+    
+</head>
+
+<body>
+	<nav class="mui-bar mui-bar-tab my-footer">
+		<a class="mui-tab-item mui-active" href="index.html">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a class="mui-tab-item" href="message.html">
+			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-tab-label">通知</span>
+		</a>
+		<a class="mui-tab-item" href="user.html">
+			<span class="mui-icon mui-icon-person"></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+	</nav>
+
+    <script type="text/javascript" charset="utf-8"> 
+		  //mui插件初始化
+        mui.init({
+            swipeBack: true //启动右滑关闭功能
+        });
+        //所有选择卡
+        var subpages = ['index.html','message.html', 'user.html'];
+        var subpage_style = {
+            top: '0px',  
+            bottom: '51px'  
+        }; 
+        //当前显示选择卡
+        var activeTab = subpages[0];
+		// console.log(JSON.stringify(subpages[0]) )
+        //创建子页面，显示首页选择卡，隐藏其余页面
+        mui.plusReady(function(){
+            var self = plus.webview.currentWebview();
+            for (var i = 0; i < subpages.length; i++){
+                var sub = plus.webview.create(subpages[i],subpages[i],subpage_style);
+                if (i >0){  //隐藏其他页面
+                    sub.hide(); 
+                }
+                self.append(sub); //加入子页面
+            }
+        });
+        //选择卡点击事件
+        mui('.mui-bar-tab').on('tap','a',function(e){
+            var targetTab = this.getAttribute('href');
+            if (targetTab == activeTab)
+                return ;
+            //更换标题
+            // var title = document.getElementById('title');
+            // title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+            //显示目标选择卡
+            plus.webview.show(targetTab);
+            //隐藏原选择卡
+            plus.webview.hide(activeTab);
+            //更改当前活跃选择卡
+            activeTab = targetTab;
+        });
+    </script>
+</body>
+
+</html>

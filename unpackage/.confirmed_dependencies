@@ -1,0 +1,17 @@
+{
+	"login.html": {
+		"refer": [
+			"reg.html",
+			"index.html",
+			"sys/main.html"
+		]
+	},
+	"sys/main.html": {
+		"refer": [
+			"service/ask.html",
+			"service/floatUser.html",
+			"service/home.html",
+			"service/map.html"
+		]
+	}
+}

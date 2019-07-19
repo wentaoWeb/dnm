@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<link rel="stylesheet" href="../../libs/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../../assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/mui.picker.min.css">
+    <link rel="stylesheet" href="../../css/mui.poppicker.css">
+    <link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+    <script src="../../libs/jquery.min.js"></script>
+    <script src="../../assets/mui/js/mui.min.js"></script>
+    <script src="../../libs/vue.min.js"></script>
+    <script src="../../libs/bootstrap.min.js"></script>
+    <script src="../../libs/layer/layer.js"></script>
+    <script src="../../libs/rem.js"></script>
+    <!--<script src="../../js/public.js"></script>-->
+    <script src="../../js/main.js"></script>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #F8F7FC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .my-header {
+            height: 0.88rem;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .my-header .mui-title {
+            color: #000;
+            font-size: 0.36rem;
+        }
+
+        .my-header a,
+        .my-header h1 {
+            line-height: 0.88rem;
+        }
+
+        .mui-bar-nav.mui-bar .mui-icon {
+            padding: 0;
+            margin: 0;
+            color: #000;
+        }
+
+        .mui-bar-nav~.mui-content {
+            background-color: #f8f7fc
+        }
+
+        .mui-table-view:before {
+            height: 0;
+        }
+
+        .mui-table-view:after {
+            height: 0;
+        }
+
+        .mui-search {
+            padding: 10px;
+            background: #fff!important;
+        }
+
+        .mui-search input[type=search] {
+            padding-left: 30px;
+            padding-top: 10px;
+            background: #F3F3F3;
+        }
+
+        .mui-icon {
+            line-height: 2.5;
+
+        }
+
+        .mui-search.mui-active:before {
+            left: 15px;
+        }
+
+        .detail {
+            background-color: #fff;
+            margin-top: 15px;
+        }
+
+        .detail img {
+            width: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .detail h1 {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+            font-size: 0.50rem;
+        }
+
+        .bottom p {
+            line-height: 0.8rem;
+            font-size: 0.38rem;
+        }
+
+        .bottom p span {
+            color: #000;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 侧滑导航根容器 -->
+    <div id="app">
+        <div class="mui-off-canvas-wrap mui-draggable">
+            <header class="mui-bar mui-bar-nav my-header">
+                <a href="javascript:history.go(1)" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+                <h1 class="mui-title">现场稽查情况</h1>
+            </header>
+            <div class="mui-content mui-scroll-wrapper content" id="offCanvasContentScroll">
+                <div>
+                    <!-- 搜索框 -->
+                    <div class="mui-input-row mui-search">
+                        <input type="search" class="mui-input-clear">
+                        <span class="mui-icon mui-icon-clear mui-hidden"></span>
+                        <span class="mui-placeholder">
+                            <span class="mui-icon mui-icon-search"></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <ul>
+                        <li class="detail">
+                            <h1>
+                                <img src="../../images/iconMain/icon/cfshsp.png" alt=""> 20190501
+                            </h1>
+                            <div style="padding:20px" class="bottom">
+                                <p>项目名称
+                                    <span>项目五部</span>
+                                </p>
+                                <p>施工队伍
+                                    <span>三班五组</span>
+                                </p>
+                                <p>施工日期
+                                    <span>2019-05-01</span>
+                                </p>
+                                <p>施工地点
+                                    <span>公司园区</span>
+                                </p>
+                                <p>稽查结果
+                                    <span>
+                                        <em style="color:springgreen">20</em>项合格</span>
+                                    <span>
+                                        <em style="color:red">2</em>项违规</span>
+                                    <span>
+                                        <em style="color:orange">3</em>项不规范</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="detail">
+                            <h1>
+                                <img src="../../images/iconMain/icon/cfshsp.png" alt=""> 20190501
+                            </h1>
+                            <div style="padding:20px" class="bottom">
+                                <p>项目名称
+                                    <span>项目五部</span>
+                                </p>
+                                <p>施工队伍
+                                    <span>三班五组</span>
+                                </p>
+                                <p>施工日期
+                                    <span>2019-05-01</span>
+                                </p>
+                                <p>施工地点
+                                    <span>公司园区</span>
+                                </p>
+                                <p>稽查结果
+                                    <span>
+                                        <em style="color:springgreen">20</em>项合格</span>
+                                    <span>
+                                        <em style="color:red">2</em>项违规</span>
+                                    <span>
+                                        <em style="color:orange">3</em>项不规范</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="detail">
+                            <h1>
+                                <img src="../../images/iconMain/icon/cfshsp.png" alt=""> 20190501
+                            </h1>
+                            <div style="padding:20px" class="bottom">
+                                <p>项目名称
+                                    <span>项目五部</span>
+                                </p>
+                                <p>施工队伍
+                                    <span>三班五组</span>
+                                </p>
+                                <p>施工日期
+                                    <span>2019-05-01</span>
+                                </p>
+                                <p>施工地点
+                                    <span>公司园区</span>
+                                </p>
+                                <p>稽查结果
+                                    <span>
+                                        <em style="color:springgreen">20</em>项合格</span>
+                                    <span>
+                                        <em style="color:red">2</em>项违规</span>
+                                    <span>
+                                        <em style="color:orange">3</em>项不规范</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="detail">
+                            <h1>
+                                <img src="../../images/iconMain/icon/cfshsp.png" alt=""> 20190501
+                            </h1>
+                            <div style="padding:20px" class="bottom">
+                                <p>项目名称
+                                    <span>项目五部</span>
+                                </p>
+                                <p>施工队伍
+                                    <span>三班五组</span>
+                                </p>
+                                <p>施工日期
+                                    <span>2019-05-01</span>
+                                </p>
+                                <p>施工地点
+                                    <span>公司园区</span>
+                                </p>
+                                <p>稽查结果
+                                    <span>
+                                        <em style="color:springgreen">20</em>项合格</span>
+                                    <span>
+                                        <em style="color:red">2</em>项违规</span>
+                                    <span>
+                                        <em style="color:orange">3</em>项不规范</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        mui('#offCanvasSideScroll').scroll();
+        mui('#offCanvasContentScroll').scroll();
+
+        mui.init({
+            swipeBack: true //启用右滑关闭功能
+        });
+
+
+    </script>
+</body>
+
+</html>
