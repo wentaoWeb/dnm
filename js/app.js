@@ -9,7 +9,10 @@ SHARE_URL = "http://" + IP + "/public/index.php/wap/Wx/share"; //分享地址
 UPLOAD_URL = "http://zhongbang.oss-cn-beijing.aliyuncs.com/"; //阿里oss服务器
 // 请求前缀
 // var baseURL = "http://localhost:888/dnm";//本地服务器访问地址
-var baseURL = "http://10.0.0.195:888/dnm"; //app访问地址
+// var baseURL = "http://192.168.43.137:888/dnm"; //vpn app访问地址
+// var baseURL = "http://192.168.0.105:888/dnm"; //vpn app访问地址
+
+var baseURL = "http://10.0.0.195:8080/dnm"; //app访问地址
 
 
 (function($, owner) {
@@ -77,7 +80,6 @@ var baseURL = "http://10.0.0.195:888/dnm"; //app访问地址
 						case 404:
 							mui.toast("很抱歉，请求方法丢失或不存在！");
 							break;
-
 						default:
 							mui.toast("未知网络错误，请稍后重试！");
 							break;
@@ -92,6 +94,39 @@ var baseURL = "http://10.0.0.195:888/dnm"; //app访问地址
 			}
 		});
 	};
+
+
+	owner.post = function mui_ajax(request_url, request_body, success_fun, desc) {
+		var desc = desc || "详细";
+		var token = localStorage.getItem("TOKEN_USER");
+		var userid = localStorage.getItem("TOKEN_USER_ID");
+		var data_time = getTime();
+		var request_data = {
+			request: {
+				head: {},
+				body: request_body
+			},
+		};
+		console.log(desc + "请求:" + JSON.stringify(request_data));
+		mui.ajax(com_url + request_url, {
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			data: request_data,
+			dataType: "json",
+			type: "post",
+			timeout: 10000,
+			success: function(data) {
+				console.log(desc + "成功请求返回：");
+				console.log(data);
+				success_fun(data)
+			},
+			error: function(xhr, type, errorThrown) { //异常处理；
+				//  error_function(xhr, type, errorThrown);
+				console.log(type)
+			},
+		});
+	}
 
 	/**
 	 * 获取当前状态

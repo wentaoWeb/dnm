@@ -80,7 +80,7 @@
  				photos.push({
  					path: zip.target
  				});
-
+				
  				showPhotos();
  			}, function(error) {
  				console.log("压缩error");
@@ -214,6 +214,7 @@
  }
 
  function showPhotos() {
+	 $('#demo').hide();
  	var table = document.getElementById('photos');
  	var len = photos.length;
  	if (len > max) {
@@ -230,7 +231,7 @@
  		img.src = photos[i].path;
  		// console.log(photos[i].path)
  		img.setAttribute("data-preview-src", ""),
- 			img.setAttribute("data-preview-group", "1")
+ 		img.setAttribute("data-preview-group", "1")
 
  		//删除图片
  		var closeButton = document.createElement('em');
@@ -245,12 +246,15 @@
  		console.log($(this).parent().index())
  		photos.splice($(this).parent().index(), 1);
  		console.log(photos.length)
+		
 
  		galleryFiles.splice(($(this).parent().index()), 1);
  		console.log(galleryFiles.length)
 
  		$(this).parent().remove();
-
+		if(photos.length == 0){
+			 $('#demo').show();
+		}
 
  	});
  	plus.nativeUI.closeWaiting();

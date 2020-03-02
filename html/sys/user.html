@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<meta name="viewport"
-		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-	<link rel="stylesheet" href="../../css/base.css">
-	<link rel="stylesheet" href="../../css/main.css">
-	<link rel="stylesheet" href="../../assets/mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../css/base.css">
+		<link rel="stylesheet" href="../../css/main.css">
+		<link rel="stylesheet" href="../../assets/mui/css/mui.min.css">
 
-	<link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
 
-	<script src="../../libs/jquery.min.js"></script>
-	<script src="../../assets/mui/js/mui.min.js"></script>
-	<script src="../../libs/rem.js"></script>
-	<script src="../../js/public.js"></script>
-	<script src="../../js/main.js"></script>
-	<script src="../../js/vue.min.js"></script>
-	<script type="text/javascript">
-		mui.init()
-	</script>
-	<style>
-		.my-header {
+		<script src="../../libs/jquery.min.js"></script>
+		<script src="../../assets/mui/js/mui.min.js"></script>
+		<script src="../../libs/rem.js"></script>
+		<script src="../../js/public.js"></script>
+		<script src="../../js/main.js"></script>
+		<script src="../../js/vue.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<style>
+			.my-header {
 			height: 0.88rem;
 			background-color: #51BFF7;
 			color: #fff;
@@ -77,103 +76,112 @@
 			color: #ACACAC!important;
 		}
 	</style>
-</head>
+	</head>
 
-<body>
-	<!-- 侧滑导航根容器 -->
-	<div class="mui-off-canvas-wrap mui-draggable" id="app">
-		<!-- 主页面容器 -->
-		<div class="mui-inner-wrap">
-			<!-- 主页面标题 -->
-			<header class="mui-bar mui-bar-nav my-header">
-				<h1 class="mui-title">我</h1>
-			</header>
-			<div class="mui-content mui-scroll-wrapper" id="offCanvasContentScroll" style="background-color: #F5F6F8;">
-				<div class="mui-scroll">	
-					<div class="bg">
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell mui-media" style="padding-top: 25px">
-								<span class="mui-icon mui-icon-camera"></span>头像
-								<img class="mui-media-object mui-pull-right" src="../../images/timg (1).jpg">
-							</li>
-							<li class="mui-table-view-cell">
-								<span class="mui-icon mui-icon-person"></span>姓名 <i>{{ userMsg.fullname}}</i>
-							</li>
-							<li class="mui-table-view-cell">
-								<span class="mui-icon-extra mui-icon-extra-hotel"></span>部门
-							</li>
-							<li class="mui-table-view-cell">
-								<span class="mui-icon-extra mui-icon-extra-xiaoshuo"></span>职位
-							</li>
-							<li class="mui-table-view-cell">
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-draggable" id="app">
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap">
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav my-header">
+					<h1 class="mui-title">我</h1>
+				</header>
+				<div class="mui-content mui-scroll-wrapper" id="offCanvasContentScroll" style="background-color: #F5F6F8;">
+					<div class="mui-scroll">
+						<div class="bg">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-media" style="padding-top: 25px">
+									<span class="mui-icon mui-icon-camera"></span>头像
+									<img class="mui-media-object mui-pull-right" src="../../images/timg.jpg">
+								</li>
+								<li class="mui-table-view-cell">
+									<span class="mui-icon mui-icon-person"></span>姓名 <i>{{ userMsg.fullname}}</i>
+								</li>
+								<li class="mui-table-view-cell">
+									<span class="mui-icon-extra mui-icon-extra-hotel"></span>部门
+								</li>
+								<li class="mui-table-view-cell">
+									<span class="mui-icon-extra mui-icon-extra-xiaoshuo"></span>职位
+								</li>
+								<li class="mui-table-view-cell">
 									<span class="mui-icon mui-icon-email"></span>邮箱 <i>{{ userMsg.email }}</i>
-							</li>
-							<li class="mui-table-view-cell">
+								</li>
+								<li class="mui-table-view-cell">
 									<span class="mui-icon mui-icon-phone"></span>手机号码 <i>{{ userMsg.mobile }}</i>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right"><span class="mui-icon mui-icon-locked"></span>密码<i>忘记密码</i></a>
-							</li>
-						</ul>
-						<button id="tuichu" class="mui-btn mui-btn-block" style="margin-top: 0.3rem">退出登录</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a class="mui-navigate-right"><span class="mui-icon mui-icon-locked"></span>密码<i>忘记密码</i></a>
+								</li>
+							</ul>
+							<button id="tuichu" class="mui-btn mui-btn-block" style="margin-top: 0.3rem">退出登录</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<script src="../../js/app.js"></script>
-	
-	<script type="text/javascript" charset="utf-8">
-		console.log(app.getState());
+		<script src="../../js/app.js"></script>
+
+		<script type="text/javascript" charset="utf-8">
 			var userID
 			var vm = new Vue({
-				el:"#app",
+				el: "#app",
 				data: {
 					userMsg: {}
 				},
-				methods:{
-					ajax () {
+				methods: {
+					ajax() {
 						var _this = this
-						console.log(app.getState().user.userId)
-						mui.plusReady(function () {
-							userID = {
-								userId: app.getState().user.userId
-							}
-							console.log(userID);
-							app.request("app", "login", userID	, "get", function(data){
-								console.log(data);
-								if(data.code === 401){
-									mui.alert('身份已失效,请重新登陆','提示','确定',function(){
-										this.userMsg = {}
-									},'div')
-								}
-								this.userMsg = data.appUserEntity
-							})
-						})
+						let user = localStorage.getItem('user');
+						// console.log(JSON.stringify(user))
+						this.userMsg = user;
+						// mui.plusReady(function() {
+						// 	userID = {
+						// 		userId: user.userId
+						// 	}
+						// 	// console.log(userID);
+						// 	// app.request("app", "login", userID, "get", function(data) {
+						// 	// 	console.log(data);
+						// 	// 	if (data.code === 401) {
+						// 	// 		mui.alert('身份已失效,请重新登陆', '提示', '确定', function() {
+						// 	// 			this.userMsg = {}
+						// 	// 		}, 'div')
+						// 	// 	}else if(data.code === 0){
+						// 	// 		this.userMsg = data.appUserEntity;
+						// 	// 	}
+								
+						// 	// })
+						// })
 					}
 				},
-					created(){
-						this.ajax()
+				created() {
+					this.ajax()
 				}
 			});
-			
-			mui.plusReady(function () {
+
+			mui.plusReady(function() {
 				var tuichu = document.getElementById("tuichu")
-				tuichu.addEventListener('tap', function(){
-					mui.confirm("您确定退出吗","提示",['是','否'],function(e){
-						if(e.index == 0){
-							app.request("app", "logout",  "post", function(res){
-								alert(res.msg)
-								app.clearToken()
-								// location.reload();
-								mui.openWindow({
-									url: '/toFace.html',
-									id: 'toFace.html'
-								});
-							})
+				tuichu.addEventListener('tap', function() {
+					mui.confirm("您确定退出吗", "提示", ['是', '否'], function(e) {
+						if (e.index == 0) {
+							app.clearToken();
+							// location.reload();
+							plus.webview.open("/toFace.html");
+							// $.post(baseURL + '/app/logout', {
+							// 	
+							// }, function(res) {
+							// 	console.log(JSON.stringify(res) )
+							// 	
+							// })
+							// app.request("app", "logout",  "post", function(res){
+							// 	console.log(JSON.stringify(res) )
+							// 	app.clearToken()
+							// 	// location.reload();
+							// 	plus.webview.open("/toFace.html");
+							// })
 						}
-					},"div")
+					}, "div")
 				});
 			})
 			// 双击退出
@@ -185,13 +193,12 @@
 					setTimeout(function() {
 						first = null
 					}, 1000)
-				}else{
-					if(new Date().getTime() - first < 1000)
+				} else {
+					if (new Date().getTime() - first < 1000)
 						plus.runtime.quit()
 				}
 			}
-			
-	</script>
-</body>
+		</script>
+	</body>
 
 </html>

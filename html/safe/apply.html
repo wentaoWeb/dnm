@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<!--<link rel="stylesheet" href="../../libs/bootstrap.min.css">-->
+		<link rel="stylesheet" href="../../assets/mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../css/base.css">
+		<link rel="stylesheet" href="../../css/main.css">
+		<link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+		<link rel="stylesheet" href="../../assets/swiper/css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css" />
+		<script src="../../libs/jquery.min.js"></script>
+		<script src="../../assets/mui/js/mui.min.js"></script>
+		<script src="../../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../libs/vue.min.js"></script>
+		<script src="../../libs/bootstrap.min.js"></script>
+		<script src="../../libs/rem.js"></script>
+		<script src="../../js/main.js"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+		html,body,{
+            width:100%;
+            height:100%;
+            background: #F8F7FC;
+			font-size: 16px;
+        }
+		p{
+			padding: 0;
+			margin: 0;
+		}
+        .my-header {
+            height: 0.88rem;
+            background-color: #FFFFFF;
+            color: #000;
+			
+        }
+		.mui-off-canvas-wrap .mui-bar{
+			position: fixed !important;
+			top: 0;
+		}
+        .my-header .mui-title {
+            color: #000;
+            font-size: 0.36rem;
+        }
+		.mui-bar-nav.mui-bar .mui-icon{
+			color: #000000;
+		}
+        .my-header a,
+        .my-header h1 {
+            line-height: 0.88rem;
+        }
+		.mui-content-padded{
+			margin: 0px;
+		}
+		.line{
+			height: 10px;
+			background-color: #F8F7FC;
+		}
+		#search , .projectDetail{
+			padding: 10px;
+		}
+		.projectDetail{
+			margin-top: -15px;
+		}
+		input[type=search]{
+			background-color: #F8F7FC;
+		}
+		.projectDetail input{
+			font-size: 16px;
+			width: auto;
+			border: none;
+			margin-bottom: 0;
+		}
+		.row{
+			padding-bottom: 10px;
+			align-items: center;
+		}
+		.title{
+			font-size: 16px;
+			color: #333333;
+		}
+		.val{
+			font-size: 16px;
+			color: #999999;
+		}
+		.goods{
+			display: flex;
+			border-bottom: 1px solid #999999;
+			padding: 10px 0;
+		}
+		.goods .goodsLeft{
+			width: 80%;
+		}
+		.goods .goodsRight{
+			width: 20%;
+			height: 100%;
+			color: #000000;
+			display: flex;
+			align-items: center;
+		}
+		.goodsNum{
+			margin-right: 7px;
+		}
+		.goods .goodsRight .goodsNum input{
+			height: 80%;
+			width: 35px;
+			color: #000000;
+			border: 1px solid #000000;
+			padding: 10px 0px;
+			text-align: center;
+		}
+		.ui-alert {
+			text-align: center;
+			/* padding: 20px 10px; */
+			font-size: 16px;
+		}
+		.apply{
+			padding-top: 10px;
+		}
+		.apply label em{
+			color: red;
+		}
+		.demo{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			padding-top: 10px;
+		}
+		.demo li{
+			width: 100px;
+			height: 100px;
+			border: 1px dashed #999999;
+			color: #666666;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.mui-bar-nav~.mui-content{
+			width: 100%;
+			height: 100%;
+			padding-bottom: 0px;
+		}
+		.image-item {
+		    float: left;
+		    position: relative;
+		    margin: 0 10px;
+		
+		}
+		
+		img {
+		    width: 100px;
+		    height: 100px;
+		
+		}
+		
+		video {
+		    width: 100px;
+		    height: 100px;
+		
+		}
+		
+		.image-close {
+		    position: absolute;
+		    display: inline-block;
+		    right: 0px;
+		    top: 0px;
+		    width: 20px;
+		    height: 20px;
+		    text-align: center;
+		    line-height: 20px;
+		    border-radius: 12px;
+		    background-color: #FF5053;
+		    color: #f3f3f3;
+		    border: solid 1px #FF5053;
+		    font-size: 9px;
+		    font-weight: 200;
+		    z-index: 999;
+		}
+		
+		.video-close {
+		    position: absolute;
+		    display: inline-block;
+		    right: 0px;
+		    top: 0px;
+		    width: 20px;
+		    height: 20px;
+		    text-align: center;
+		    line-height: 20px;
+		    border-radius: 12px;
+		    background-color: #FF5053;
+		    color: #f3f3f3;
+		    border: solid 1px #FF5053;
+		    font-size: 9px;
+		    font-weight: 200;
+		    z-index: 999;
+		}
+		
+		.video-item {
+		    float: left;
+		    position: relative;
+		    margin: 0 10px;
+		}
+    </style>
+	</head>
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div id="app">
+			<div class="mui-off-canvas-wrap mui-draggable">
+				<!-- 主页面容器 -->
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav my-header">
+					<a href="javascript:history.go(1)" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<h1 class="mui-title">现场收货</h1>
+					<a v-if="puOrderInfo != ''" class="mui-icon mui-pull-right" style="font-size:14px;" @click="save()">保存</a>
+				</header>
+				<div class="mui-content">
+					<div class="mui-content-padded">
+						<div class="content">
+							<div class="contentBody">
+								<div class="line"></div>
+								<div id="search">
+									<p class="title">项目名称：</p>
+									<div class="mui-input-row mui-search">
+										<input id="projectName" type="search" class="mui-input-clear" placeholder="请输入项目名称">
+									</div>
+									<p class="title">项目编号：</p>
+									<div class="mui-input-row mui-search">
+										<input type="search" id="projectId" class="mui-input-clear" placeholder="请输入项目编号">
+									</div>
+								</div>
+								<div v-if="puOrderInfo != ''" class="show">
+									<div class="projectDetail">
+										<!-- <p>交货日期</p> -->
+										<div class="row">
+											<span class="title">交货日期：</span>
+											<span class="val" id="deliveryData">{{now}}</span>
+										</div>
+										<div class="row" style="display: flex;">
+											<span class="title">交货单位：</span>
+											<input type="text" id="delivery" class="mui-input-clear" placeholder="请输入交货单位">
+										</div>
+									</div>
+									<!-- <div class="line"></div> -->
+									<div class="projectDetail">
+										<ul>
+											<li class="goods" v-for="item in puOrderInfo">
+												<div class="goodsLeft">
+													<p>{{item.goodsName}}</p>
+													<p>{{item.goodsCode}}</p>
+												</div>
+												<div class="goodsRight">
+													<div class="goodsNum">
+														<input type="number" v-model="item.goodsNum" :value="item.goodsNum" />
+													</div>
+													<div class="goodUnit">{{item.goodsUnit}}</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="line"></div>
+									<div class="projectDetail">
+										<form>
+											<div class="apply">
+												<label><em>*</em>选择照片</label>
+												<ul id="photos" ref="photos">
+												</ul>
+												<ul v-if="photos == ''" id="demo" class="demo">
+													<li id="tipOne"><a>入库单图片</a></li>
+													<li id="tipTwo"><a>发票图片</a></li>
+													<li id="tipThr"><a>个人图片</a></li>
+												</ul>
+												<!-- <div id="video"></div> -->
+												<div class="photos" style="padding-top: 10px;">
+													<a id="mypick" href="#cropper-sheet">
+														<img id="image" src="../../img/+@2x.png" width="100px" height="100px" style="margin-left: 11px;" />
+													</a>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="line"></div>
+									<div class="projectDetail" style="margin: 0;">
+										<p class="title">备注：</p>
+										<textarea id="remark" rows="5" placeholder="请输入备注"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id='userResult' class="ui-alert" style="height: 100%;"></div>
+				<div id="cropper-sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+					<ul class="mui-table-view margin">
+						<li class="mui-table-view-cell">
+							<a id="paizhao" @click="getImg($event)" data-type="camera">拍照</a>
+						</li>
+						<!-- <li class="mui-table-view-cell">
+							<a id="luxiang" @click="getImg($event)" data-type="video">录像</a>
+						</li> -->
+						<li class="mui-table-view-cell">
+							<a id="xiangce" @click="getImg($event)" data-type="gallery">选取照片</a>
+						</li>
+						<!-- <li class="mui-table-view-cell">
+							<a id="shipin" @click="getImg($event)" data-type="galleryVideos">选取视频</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+			<script src="../../assets/mui/js/mui.zoom.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../../assets/mui/js/mui.previewimage.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript" src="../../js/cropper.min.js"></script>
+			<script src="../../js/getImgs.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+				var vm = new Vue({
+					el: "#app",
+					data: {
+						infoId: null,
+						purchasOrder: {},
+						puOrderInfo: [],
+						puOrder: [],
+						vm:null
+					},
+					methods: {
+						tologin() {
+							mui.openWindow({
+								url: '/login.html',
+								id: 'login.html'
+							});
+						},
+						//通过菜单调用硬件
+						getImg: function(e) {
+							document.activeElement.blur(); //收起虚拟键盘
+							var address;
+							mui.previewImage()
+							mui.plusReady(function() {
+								//上传图片
+								createUploader();
+							});
+							//获取自定义属性名
+							var type = e.target.getAttribute('data-type');
+							mui("#cropper-sheet").popover('hide');
+							switch (type) {
+								case 'camera':
+									clickCamera();
+									break;
+								case 'gallery':
+									clickGallery();
+									break;
+								case 'video':
+									clickVideo();
+									break;
+								case 'galleryVideos':
+									galleryVideo();
+								default:
+									break;
+							}
+						},
+						//上传图片
+						save() {
+							plus.nativeUI.showWaiting();
+							
+							var handCompany = document.getElementById('delivery').value;
+							var handDate = vm.now;
+							var text = document.getElementById('remark').value;
+							var token = localStorage.getItem("$state");
+							let user = JSON.parse(localStorage.getItem("user"));
+							handDate = handDate.replace(/\//ig, '-');
+							// console.log(handDate)
+							var puOrderInfo = vm.puOrderInfo;
+							for (var i = 0; i < puOrderInfo.length; i++) {
+								puOrderInfo[i].agreementId = vm.puOrder.agreementId,
+									puOrderInfo[i].userId = user.userId,
+									puOrderInfo[i].supplyCompany = handCompany,
+									puOrderInfo[i].collectDate = handDate
+								puOrderInfo[i].text = text
+							}
+							$.ajax({
+								url: baseURL + '/app/goodsCollect/saveCollectOrder',
+								headers: {
+									"token": token //此处放置请求到的用户token
+								},
+								type: "POST",
+								contentType: "application/json", // 指定这个协议很重要
+								data: JSON.stringify(puOrderInfo), //只有这一个参数，json格式，后台解析为实体，后台可以直接用								
+								success: function(res) {
+									console.log(JSON.stringify(res))
+									if (res.code == 0) {
+										// task = plus.uploader.createUpload(
+										// 	'http://192.168.43.137:888/dnm/app/goodsCollect/saveCollectOrderPicture', {
+										// task = plus.uploader.createUpload('http://192.168.43.137:888/dnm/app/goodsCollect/saveCollectOrderPicture', {
+										task = plus.uploader.createUpload('http://10.0.0.195:888/dnm/app/goodsCollect/saveCollectOrderPicture', {
+												method: 'POST'
+											},
+											function(r) {
+												console.log(JSON.stringify(r));
+												// alert(JSON.stringify(r));
+												if (r.state == 4) {
+													plus.nativeUI.closeWaiting();
+													mui.toast('保存成功');
+													location.reload();
+													// scroll(0, 0);
+												} else {
+													mui.alert(r.state);
+												}
+											});
+										var len = photos.length;
+										task.addData("agreementId", "" + res.agreementId + "");
+										task.addData("goodsCollectOrderId", "" + res.goodsCollectOrderId + "");
+										var picName = ['入库单', '发票', '个人照片', 'other', 'other', 'other', 'other', 'other', 'other']
+										for (var i = 0; i < len; i++) {
+											var j = i + 1;
+											var temp = 'phone' + j;
+											// console.log(photos[i])
+											task.addFile(photos[i].path, {
+												key: "file" + temp,
+												name: picName[i] + '.jpg',
+												mime: "image/jpeg"
+											});
+										}
+										task.start();
+									} else {
+										alert(res.error_msg)
+									}
+								},
+							})
+						}
+					},
+					mounted() {
+
+					}
+				});
+				// mui('#offCanvasSideScroll').scroll();
+				// mui('#offCanvasContentScroll').scroll();
+				mui.init({
+					swipeBack: true //启用右滑关闭功能  
+				});
+
+				document.getElementById("search").addEventListener("keypress", function(event) {
+					var projectName = document.getElementById("projectName").value;
+					var projectcode = document.getElementById("projectId").value;
+					var token = localStorage.getItem("$state");
+					let user = JSON.parse(localStorage.getItem("user"));
+
+					token = token.toString().replace(/"/ig, '');
+					// console.log(token)
+					if (event.keyCode == "13") {
+						var obj = {
+							"agreementName": projectName,
+							"agreementCode": projectcode,
+							"userId": user.userId
+						}
+						// console.log(obj);
+						$.ajax({
+							url: baseURL + '/app/goodsCollect/queryAgreement',
+							headers: {
+								"token": token //此处放置请求到的用户token
+							},
+							type: "POST",
+							data: obj,
+							dataType: "json",
+							success: function(res) {
+								// console.log(res);
+								var data = res.msg;
+								var newList = [];
+								for (var i = 0; i < data.length; i++) {
+									var obj = {};
+									obj.value = data[i].agreementID;
+									obj.text = data[i].agreementName;
+									newList.unshift(obj);
+								}
+								var roadPick = new mui.PopPicker(); //获取弹出列表组建，假如是二联则在括号里面加入{layer:2}
+								roadPick.setData(newList);
+								roadPick.show(function(item) { //弹出列表并在里面写业务代码
+									var itemCallback = roadPick.getSelectedItems();
+									$('#showUserPicker').html(itemCallback[0].text);
+									var name = itemCallback[0].text;
+									var code = itemCallback[0].value;
+									// 
+									var info = {
+										"agreementId": code
+									};
+									app.request("app/goodsCollect", "queryPuOrder", info, function(res) {
+										// console.log(res);
+										var puOrderInfo = res.puOrderInfo;
+										puOrderInfo.forEach(item => {
+											item.goodsNum = 0;
+										})
+										window.vm.puOrderInfo = puOrderInfo;
+										window.vm.puOrder = res.puOrder;
+										// let list = res.page.list[0];
+										document.getElementById('projectName').focus();
+										document.getElementById('projectName').value = '1';
+										document.getElementById('projectName').value = name;
+										document.getElementById('projectId').focus();
+										document.getElementById('projectId').value = '1';
+										document.getElementById('projectId').value = code;
+
+										//获取当前时间
+										var myDate = new Date();
+										var year = myDate.getFullYear();
+										var month = myDate.getMonth() + 1;
+										if (month < 10) {
+											month = '0' + month
+										}
+										var day = myDate.getDate();
+										if (day < 10) {
+											day = '0' + day
+										}
+										var hour = myDate.getHours();
+										if (hour < 10) {
+											hour = '0' + hour
+										}
+										var mi = myDate.getMinutes();
+										if (mi < 10) {
+											mi = '0' + mi
+										}
+										var s = myDate.getSeconds();
+										if (s < 10) {
+											s = '0' + s
+										}
+										var Now = year + '/' + month + '/' + day + '  ' + hour + ':' + mi + ':' + s;
+										// console.log(Now);
+										window.vm.now = Now;
+										// console.log(document.getElementById('deliveryData').value)
+										document.activeElement.blur(); //收起虚拟键盘
+
+									})
+								})
+							}
+						});
+						document.activeElement.blur(); //收起虚拟键盘
+
+						// event.preventDefault();
+					}
+				});
+			</script>
+	</body>
+
+</html>

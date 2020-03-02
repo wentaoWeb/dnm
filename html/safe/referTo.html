@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+		<link rel="stylesheet" href="../../css/base.css">
+		<link rel="stylesheet" href="../../css/main.css">
+		<link rel="stylesheet" href="../../assets/mui/css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+		<script src="../../libs/jquery.min.js"></script>
+		<script src="../../assets/mui/js/mui.min.js"></script>
+		<script src="../../libs/rem.js"></script>
+		<script src="../../js/main.js"></script>
+		<script src="../../libs/vue.min.js"></script>
+		<script src="../../js/app.js"></script>
+		<style>
+			#app{
+				/* width: 100%; */
+				/* height: 100%; */
+				/* background-color: white; */
+			}
+			.my-header {
+			    height: 0.88rem;
+			    background-color: #FFFFFF;
+			    color: #000;
+				
+			}
+			.mui-off-canvas-wrap .mui-bar{
+				position: fixed !important;
+				top: 0;
+			}
+			.my-header .mui-title {
+			    color: #000;
+			    font-size: 0.36rem;
+			}
+			.mui-bar-nav.mui-bar .mui-icon{
+				color: #000000;
+			}
+
+			.my-header a,
+			.my-header h1 {
+				line-height: 0.88rem;
+			}
+
+			.mui-bar-nav~.mui-content {
+				padding-top: 0px !important;
+				padding-bottom: 0px;
+				background-color: #fff;
+			}
+
+			.mui-off-canvas-wrap .mui-bar {
+				position: fixed !important;
+			}
+
+			.line {
+				margin-top: 40px;
+				width: 100%;
+				height: 30px;
+				/* background-color:rgba(248,248,255); */
+			}
+			/* .lines{
+				width: 100%;
+				height: 30px;
+				background-color:rgba(187,187,187,.1);
+			} */
+			#agreementInfo{
+				display: block;
+				font-size: 14px;
+			}
+			#agreementInfo span{
+				display: block;
+			}
+			.agreementName,.agreementCode{
+				width: 90%;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+			.agreemenTime{
+				display: flex;
+				justify-content: flex-start;
+			}
+			.beginTime{
+				padding-right: 60px;
+			}
+			.mui-collapse-content{
+				position: relative;
+				font-size: 14px;
+			}
+			#status{
+				background-color: #56ABE4;
+				width: 50px;
+				text-align: center;
+				color: white;
+				
+			}
+			.toLine{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			.goodsCollectOrderId,.supplyCompany{
+				width: 85%;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+			.mui-table-view{
+				width: 100%;
+			}
+			.mui-content-padded{
+				width: 100%;
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<header class="mui-bar mui-bar-nav my-header">
+				<a href="javascript:history.go(1)" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">提交历史</h1>
+			</header>
+			
+			<div class="mui-content">
+				<div class="mui-content-padded">
+					<div class="content">
+						<div class="contentBody">
+							<div class="line"></div>
+							<div class="searchHistory" style="padding-bottom: 10px; width: 80%;margin: 0 auto;">
+								<div class="mui-input-row mui-search">
+									<input id="projectName" type="search" class="mui-input-clear" placeholder="请输入项目名称">
+								</div>
+							</div>
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-collapse" v-for="item in referList">
+									<a id="agreementInfo" class="mui-navigate-right" href="#" @tap="getPuOrder(item.agreementID)">
+										<span class="agreementName"><label>项目名称：</label> {{item.agreementName}}</span>
+										<span class="agreementCode"><label>项目编号：</label>{{item.agreementCode}}</span>
+										<div class="agreemenTime">
+											<span class="beginTime"><label>开始时间：</label>{{item.beginTime}}</span>
+											<span class="endTime"><label>结束时间：</label>{{item.endTime}}</span>
+										</div>
+										
+									</a>
+									<div class="mui-collapse-content" v-for="item in collect" @tap="toDetail(item)" style="border-bottom: 1px solid #ACACB4;">
+										<div class="goodsCollectOrderId"><label>编号：</label> {{item.goodsCollectOrderId}}</div>
+										<div class="supplyCompany"><label>供应商：</label>{{item.supplyCompany}}</div>
+										<div class="toLine">
+											<div><label>收货时间：</label>{{item.collectDate}}</div>
+											<div id="status">{{item.status}}</div>
+										</div>								
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			mui.init();
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					referList: [],
+					collect: [],
+					puOrder:[],
+					tips:''
+				},
+				methods: {
+					toDetail(item) {						
+						// console.log(item);
+						var item = JSON.stringify(item);
+						localStorage.setItem('CollectOrder', item);
+						mui.openWindow({
+							url: 'historyDetail.html',
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+							}
+						});
+					},
+					getPuOrder(id) {
+						var id = id;
+						localStorage.setItem('agreementID', id);
+						let token = JSON.parse(localStorage.getItem("$state"));
+						let user = JSON.parse(localStorage.getItem("user"));
+						$.ajax({
+							url: baseURL + '/app/goodsCollect/queryAgreementCollectOrderRecord',
+							headers: {
+								"token": token //此处放置请求到的用户token
+							},
+							type: "POST",
+							data: {
+								"agreementId": id,
+								"userId": user.userId
+							},
+							dataType: "json",
+							success: function(res) {
+								console.log(res);
+								if(res.code == 0){									
+									vm.collect = res.msg;
+									for (var i=0;i<vm.collect.length;i++) {
+										if(vm.collect[i].status == 0){
+											// console.log(document.getElementById('status')) ;
+											vm.collect[i].status = '未确认';	
+										}else if(vm.collect[i].status == 1){
+											vm.collect[i].status = '已确认'
+										}else if(vm.collect[i].status == 2){
+											vm.collect[i].status = '驳回'
+										}
+									}
+								}else{
+									alert(res.msg);
+								}
+							},
+						})
+					},
+					getAgreement() {
+						let token = JSON.parse(localStorage.getItem("$state"));
+						let user = JSON.parse(localStorage.getItem("user"));
+						$.ajax({
+							url: baseURL + '/app/goodsCollect/queryAgreementCollectOrderRecord',
+							headers: {
+								"token": token //此处放置请求到的用户token
+							},
+							type: "POST",
+							data: {
+								"userId": user.userId,
+								"agreementId":''
+							},
+							dataType: "json",
+							success: function(res) {
+								console.log(res);
+								vm.referList = res.msg;
+							},
+						})
+					}
+
+				},
+				mounted() {
+					this.getAgreement();
+					
+				}
+			})
+		</script>
+
+	</body>
+
+</html>

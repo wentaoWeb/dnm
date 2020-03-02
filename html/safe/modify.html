@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<!--<link rel="stylesheet" href="../../libs/bootstrap.min.css">-->
+		<link rel="stylesheet" href="../../assets/mui/css/mui.min.css">
+		<!-- <link rel="stylesheet" href="../../css/base.css"> -->
+		<link rel="stylesheet" href="../../css/main.css">
+		<!-- <link rel="stylesheet" href="../../css/apply.css"> -->
+		<link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+		<link rel="stylesheet" href="../../assets/swiper/css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css" />
+		<script src="../../libs/jquery.min.js"></script>
+		<script src="../../assets/mui/js/mui.min.js"></script>
+		<script src="../../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../libs/vue.min.js"></script>
+		<script src="../../libs/bootstrap.min.js"></script>
+		<script src="../../libs/rem.js"></script>
+		<script src="../../js/main.js"></script>
+		<script src="../../js/app.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				background: #F8F7FC;
+				font-size: 16px;
+			}
+			
+			p {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.my-header {
+				height: 0.88rem;
+				background-color: #FFFFFF;
+				color: #000;
+			
+			}
+			
+			.mui-off-canvas-wrap .mui-bar {
+				position: fixed !important;
+				top: 0;
+			}
+			
+			.my-header .mui-title {
+				color: #000;
+				font-size: 0.36rem;
+			}
+			
+			.mui-bar-nav.mui-bar .mui-icon {
+				color: #000000;
+				padding: 0px 10px;
+			}
+			
+			.my-header a,
+			.my-header h1 {
+				line-height: 0.88rem;
+			}
+			
+			.mui-content-padded {
+				margin: 0px;
+			}
+			
+			.line {
+				height: 10px;
+				background-color: #F8F7FC;
+			}
+			
+			#search,
+			.projectDetail {
+				padding: 10px;
+				background-color: white;
+			}
+			
+			/* .projectDetail {
+			
+				margin-top: -15px;
+			} */
+			
+			input[type=search] {
+				background-color: #F8F7FC;
+			}
+			
+			.projectDetail input {
+				font-size: 16px;
+				width: auto;
+				border: none;
+				margin-bottom: 0;
+			}
+			
+			.row {
+				padding-bottom: 10px;
+				align-items: center;
+			}
+			
+			.title {
+				font-size: 16px;
+				color: #333333;
+			}
+			
+			.val {
+				font-size: 16px;
+				color: #999999;
+			}
+			
+			.goods {
+				display: flex;
+				border-bottom: 1px solid #999999;
+				padding: 10px 0;
+			}
+			
+			.goods .goodsLeft {
+				width: 80%;
+			}
+			
+			.goods .goodsRight {
+				width: 20%;
+				height: 100%;
+				color: #000000;
+				display: flex;
+				align-items: center;
+			}
+			
+			.goodsNum {
+				margin-right: 7px;
+			}
+			
+			.goods .goodsRight .goodsNum input {
+				height: 80%;
+				width: 35px;
+				color: #000000;
+				border: 1px solid #000000;
+				padding: 10px 0px;
+				text-align: center;
+			}
+			
+			.ui-alert {
+				text-align: center;
+				/* padding: 20px 10px; */
+				font-size: 16px;
+			}
+			
+			.apply {
+				padding-top: 10px;
+			}
+			
+			.apply label em {
+				color: red;
+			}
+			
+			.demo {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				padding-top: 10px;
+			}
+			
+			.demo li {
+				width: 100px;
+				height: 100px;
+				border: 1px dashed #999999;
+				color: #666666;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				width: 100%;
+				height: 100%;
+				padding-bottom: 0px;
+			}
+			
+			.image-item {
+				float: left;
+				position: relative;
+				margin: 0 10px;
+			
+			}
+			
+			img {
+				width: 100px;
+				height: 100px;
+			
+			}
+			
+			video {
+				width: 100px;
+				height: 100px;
+			
+			}
+			
+			.image-close {
+				position: absolute;
+				display: inline-block;
+				right: 0px;
+				top: 0px;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				line-height: 20px;
+				border-radius: 12px;
+				background-color: #FF5053;
+				color: #f3f3f3;
+				border: solid 1px #FF5053;
+				font-size: 9px;
+				font-weight: 200;
+				z-index: 999;
+			}
+			
+			.video-close {
+				position: absolute;
+				display: inline-block;
+				right: 0px;
+				top: 0px;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				line-height: 20px;
+				border-radius: 12px;
+				background-color: #FF5053;
+				color: #f3f3f3;
+				border: solid 1px #FF5053;
+				font-size: 9px;
+				font-weight: 200;
+				z-index: 999;
+			}
+			
+			.video-item {
+				float: left;
+				position: relative;
+				margin: 0 10px;
+			}
+			
+			.change {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				position: fixed;
+				bottom: 0px;
+				z-index: 999999;
+			}
+			
+			.change button {
+				width: 50%;
+				margin: 0;
+				padding: 0;
+				line-height: 40px;
+				border-radius: 0px;
+			}
+			ul{
+				padding: 0;
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div id="app">
+			<div class="mui-off-canvas-wrap mui-draggable">
+				<!-- 主页面容器 -->
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav my-header">
+					<a href="javascript:history.go(1)" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<h1 class="mui-title">详情</h1>
+					<a class="mui-icon mui-pull-right" style="font-size:14px;" @click="update()">修改</a>
+				</header>
+				<div class="mui-content">
+						<div class="mui-content-padded">
+							<div class="content">
+								<div class="contentBody">
+									<div class="line"></div>
+									<div id="search">
+										<p>项目名称：</p>
+										<div class="mui-input-row mui-search">
+											<input id="projectName" type="text" v-model="agreementName" :value="agreementName" class="mui-input-clear"
+											 placeholder="请输入项目名称" disabled>
+										</div>
+									
+										<p>项目编号：</p>
+										<div class="mui-input-row mui-search">
+											<input type="text" id="projectId" v-model="agreementID" :value="agreementID" class="mui-input-clear" value=""
+											 placeholder="请输入项目编号" disabled>
+										</div>
+									</div>
+									<div class="show">
+										<div class="projectDetail">
+											<!-- <p>交货日期</p> -->
+											<div class="row">
+												<span class="title">交货日期：</span>
+												<span class="val" id="deliveryData">{{deliveryData}}</span>
+											</div>
+											<div class="row" style="display: flex;">
+												<span class="title">交货单位：</span>
+												<input type="text" id="delivery" v-model="supplier" :value="supplier" class="mui-input-clear" placeholder="请输入交货单位">
+											</div>
+										</div>
+										
+										<div class="projectDetail">
+											<ul>
+												<li class="goods" v-for="item in puOrderInfo">
+													<div class="goodsLeft">
+														<p>{{item.goodsName}}</p>
+														<p>{{item.goodsCode}}</p>
+													</div>
+													<div class="goodsRight">
+														<div class="goodsNum">
+															<input type="number" v-model="item.goodsNum" :value="item.goodsNum" />
+														</div>
+														<div class="goodUnit">{{item.goodsUnit}}</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="line"></div>
+										<div class="projectDetail">
+											<form>
+												<div class="apply">
+													<label><em>*</em>选择照片</label>
+													<ul id="photos" ref="photos">
+													</ul>
+													<ul v-if="photos == ''" id="demo" class="demo">
+														<li id="tipOne" @click="getImg($event)" data-type="gallery"><a>入库单图片</a></li>
+														<li id="tipTwo" @click="getImg($event)" data-type="gallery"><a>发票图片</a></li>
+														<li id="tipThr" @click="getImg($event)" data-type="gallery"><a>个人图片</a></li>
+													</ul>
+													<!-- <div id="video"></div> -->
+													<div class="photos" style="padding-top: 10px;">
+														<a id="mypick" href="#cropper-sheet">
+															<img id="image" src="../../img/+@2x.png" width="100px" height="100px" style="margin-left: 11px;" />
+														</a>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="line"></div>
+										<div class="projectDetail" style="margin: 0;">
+											<p class="title">备注：</p>
+											<textarea id="remark"  v-model="text" :value="text" rows="5" placeholder="请输入备注"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='userResult' class="ui-alert" style="height: 100%;"></div>
+					<div id="cropper-sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+						<ul class="mui-table-view margin">
+							<li class="mui-table-view-cell">
+								<a id="paizhao" @click="getImg($event)" data-type="camera">拍照</a>
+							</li>
+							<!-- <li class="mui-table-view-cell">
+								<a id="luxiang" @click="getImg($event)" data-type="video">录像</a>
+							</li> -->
+							<li class="mui-table-view-cell">
+								<a id="xiangce" @click="getImg($event)" data-type="gallery">选取照片</a>
+							</li>
+							<!-- <li class="mui-table-view-cell">
+								<a id="shipin" @click="getImg($event)" data-type="galleryVideos">选取视频</a>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+				
+			<div id="cropper-sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+				<!-- 可选择菜单 -->
+				<ul class="mui-table-view margin">
+					<li class="mui-table-view-cell">
+						<a id="paizhao" @click="getImg($event)" data-type="camera">拍照</a>
+					</li>
+					<!-- <li class="mui-table-view-cell">
+						<a id="luxiang" @click="getImg($event)" data-type="video">录像</a>
+					</li> -->
+					<li class="mui-table-view-cell">
+						<a id="xiangce" @click="getImg($event)" data-type="gallery">选取照片</a>
+					</li>
+					<!-- <li class="mui-table-view-cell">
+						<a id="shipin" @click="getImg($event)" data-type="galleryVideos">选取视频</a>
+					</li> -->
+				</ul>
+			</div>
+			<script src="../../assets/mui/js/mui.zoom.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../../assets/mui/js/mui.previewimage.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript" src="../../js/cropper.min.js"></script>
+			<script src="../../js/getImgs.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+				mui.init({
+					swipeBack: true //启用右滑关闭功能  
+				});
+
+				var vm = new Vue({
+					el: "#app",
+					data: {
+						agreementID: '',
+						agreementName: '',
+						deliveryData: '',
+						puOrderInfo: [],
+						supplier: '',
+						text: ''
+					},
+					methods: {
+						getInfo() {
+							var id = localStorage.getItem('agreementID');
+							var CollectOrder = JSON.parse(localStorage.getItem('CollectOrder'));
+							let token = JSON.parse(localStorage.getItem("$state"));
+							// console.log(CollectOrder)
+							$.ajax({
+								url: baseURL + '/app/goodsCollect/queryCollectOrderInfoRecord',
+								headers: {
+									"token": token //此处放置请求到的用户token
+								},
+								type: "POST",
+								data: {
+									"agreementId": id,
+									"goodsCollectOrderId": CollectOrder.goodsCollectOrderId
+								},
+								dataType: "json",
+								success: function(res) {
+									// console.log(res);
+									vm.agreementID = res.msg.agreementId;
+									vm.agreementName = res.msg.agreementManage.agreementName;
+									vm.deliveryData = res.msg.collectOrder.collectDate;
+									vm.puOrderInfo = res.msg.collectOrderInfo;
+									vm.supplier = res.msg.collectOrder.supplyCompany;
+									vm.text = res.msg.collectOrderInfo.text;
+									// console.log(vm.agreementID)
+								},
+							})
+						},
+						// delThisOrder() {
+						// 	var CollectOrder = JSON.parse(localStorage.getItem('CollectOrder'));
+						// 	let token = JSON.parse(localStorage.getItem("$state"));
+						// 	console.log(CollectOrder)
+						// 	$.ajax({
+						// 		url: baseURL + '/app/goodsCollect/deleteCollectOrder',
+						// 		headers: {
+						// 			"token": token //此处放置请求到的用户token
+						// 		},
+						// 		type: "POST",
+						// 		data: {
+						// 			"goodsCollectOrderId": CollectOrder.goodsCollectOrderId,
+						// 			"goodsPuOrderId": CollectOrder.goodsPuOrderId
+						// 		},
+						// 		dataType: "json",
+						// 		success: function(res) {
+						// 			// console.log(res);
+						// 		},
+						// 	})
+						// },
+						//通过菜单调用硬件
+						getImg: function(e) {
+							document.activeElement.blur(); //收起虚拟键盘
+							var address;
+							mui.previewImage()
+							mui.plusReady(function() {
+								//上传图片
+								createUploader();
+							});
+							var type = e.target.getAttribute('data-type');
+							// console.log(e.target.getAttribute('data-type'));
+							mui("#cropper-sheet").popover('hide');
+							switch (type) {
+								case 'camera':
+									clickCamera();
+									break;
+								case 'gallery':
+									clickGallery();
+									break;
+								case 'video':
+									clickVideo();
+									break;
+								case 'galleryVideos':
+									galleryVideo();
+								default:
+									break;
+							}
+						},
+						//上传图片
+						update() {
+							plus.nativeUI.showWaiting();
+							var CollectOrder = JSON.parse(localStorage.getItem("CollectOrder"));
+							var token = JSON.parse(localStorage.getItem("$state"));
+							let user = JSON.parse(localStorage.getItem("user"));
+							var puOrderInfo = vm.puOrderInfo;
+							for (var i = 0; i < puOrderInfo.length; i++) {
+								puOrderInfo[i].agreementId = vm.agreementID,
+									puOrderInfo[i].userId = user.userId,
+									puOrderInfo[i].supplyCompany = vm.supplier,
+									puOrderInfo[i].collectDate = vm.deliveryData,
+									puOrderInfo[i].text = vm.text,
+									puOrderInfo[i].goodsCollectOrderId = CollectOrder.goodsCollectOrderId
+							}
+							console.log(puOrderInfo)
+							$.ajax({
+								url: baseURL + '/app/goodsCollect/saveCollectOrder',
+								headers: {
+									"token": token //此处放置请求到的用户token
+								},
+								type: "POST",
+								contentType: "application/json", // 指定这个协议很重要
+								data: JSON.stringify(puOrderInfo), //只有这一个参数，json格式，后台解析为实体，后台可以直接用								
+								success: function(res) {
+									console.log(res)
+									if (res.code == 0) {
+										// task = plus.uploader.createUpload(
+										// 	'http://192.168.43.137:888/dnm/app/goodsCollect/saveCollectOrderPicture', {
+										// task = plus.uploader.createUpload('http://192.168.43.137:888/dnm/app/goodsCollect/saveCollectOrderPicture', {
+											task = plus.uploader.createUpload('http://10.0.0.195:888/dnm/app/goodsCollect/saveCollectOrderPicture', {
+												method: 'POST'
+											},
+											function(r) {
+												console.log(JSON.stringify(r));
+												// alert(JSON.stringify(r));
+												if (r.state == 4) {
+													plus.nativeUI.closeWaiting();
+													mui.toast('保存成功');
+													mui.openWindow({
+														url: 'modify.html',
+														waiting: {
+															autoShow: true, //自动显示等待框，默认为true
+														}
+													});
+												} else {
+													mui.alert(r.state);
+												}
+											});
+										var len = photos.length;
+										task.addData("agreementId", "" + res.agreementId + "");
+										task.addData("goodsCollectOrderId", "" + res.goodsCollectOrderId + "");
+										var picName = ['入库单', '发票', '个人照片', 'other', 'other', 'other', 'other', 'other', 'other']
+										for (var i = 0; i < len; i++) {
+											var j = i + 1;
+											var temp = 'phone' + j;
+											task.addFile(photos[i].path, {
+												key: "file" + temp,
+												name: picName[i] + '.jpg',
+												mime: "image/jpeg"
+											});
+										}
+										task.start();
+									} else {
+										alert(res.error_msg)
+									}
+								},
+							})
+
+
+						}
+					},
+					mounted() {
+						this.getInfo();
+					}
+				});
+			</script>
+	</body>
+
+</html>

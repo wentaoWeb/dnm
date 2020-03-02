@@ -128,7 +128,7 @@
 			</header>
 			<div class="mui-content">
 				<div class="image">
-					<div class="logo"><img src="images/logo.png" alt="" style="width:100%;height:100%;"></div>
+					<div class="logo"><!-- <img src="images/logo.png" alt="" style="width:100%;height:100%;"> --></div>
 				</div>
 
 				<form id='login-form' class="mui-input-group">
@@ -146,8 +146,7 @@
 					<button id='login' data-loading-icon="mui-spinner mui-spinner-white" data-loading-text="登陆中" class="mui-btn mui-btn-block mui-btn-primary">登录</button>
 					<div class="link-area">
 						<a id='toFace' @click="toFace">人脸登录</a> <span class="spliter">|</span>
-						<a id='forgetPassword'>忘记密码</a><span class="spliter">|</span>
-						<a id="faceReg" @click="faceReg">人脸绑定</a>
+						<a id='forgetPassword'>忘记密码</a>
 					</div>
 				</div>
 			</div>
@@ -169,12 +168,7 @@
 							});
 						},
 						faceReg(){
-							// console.log(11)
-							 plus.webview.open("faceReg.html"); 
-							// mui.openWindow({
-							// 	url: '/faceReg.html',
-							// 	id: 'faceReg.html'
-							// });
+							 plus.webview.open("faceReg.html"); 							
 						}
 					}
 				})
@@ -225,8 +219,8 @@
 						var loginInfo = {
 							"username": phone.value,
 							"password": user_pwd.value,
-							// os: plus.os.name + "," + plus.os.vendor + "," + plus.os.version + "," + plus.os.language + "," + plus.device.model,
-							// network: plus.networkinfo.getCurrentType(),
+							os: plus.os.name + "," + plus.os.vendor + "," + plus.os.version + "," + plus.os.language + "," + plus.device.model,
+							network: plus.networkinfo.getCurrentType(),
 						};
 
 						if (!app.checkPhoneNumber(loginInfo.username)) {
@@ -320,19 +314,7 @@
 							styles: {
 								popGesture: "none",
 								render: "always",
-								// titleNView: { //详情页原生导航配置
-								// 	backgroundColor: '#fff', //导航栏背景色
-								// 	titleText: '呀哦服务',
-								// 	titleSize:'20px',
-								// 	buttons: [{
-								// 		fontSrc:'/fonts/mui.ttf',
-								// 		text:'\ue263',
-								// 		fontSize: '20px',
-								// 		float: 'right',
-								// 		color: '#3777D9',
-								// 		//onclick: toAsk
-								// 	}]
-								// }
+								
 							},
 							waiting: {
 								autoShow: false
